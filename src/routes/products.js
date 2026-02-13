@@ -15,11 +15,13 @@ const router = express.Router();
 
 // GET /products - list all products sorted by name, with query validation
 router.get("/", async (req, res, next) => {
+  console.log("[PRODUCTS] GET /products handler start");
   try {
     // Validate query params using productSearch schema
     const validation = jsonschema.validate(req.query, productSearchSchema);
     if (!validation.valid) {
       const errors = validation.errors.map(e => e.stack);
+      console.log("[PRODUCTS] Query validation failed", errors);
       throw new ExpressError(errors.join(", "), 400);
     }
 
@@ -33,26 +35,34 @@ router.get("/", async (req, res, next) => {
     // If no search params, return all products sorted by name
     let products;
     if (Object.keys(criteria).length === 0) {
+      console.log("[PRODUCTS] No criteria, calling Product.findAll()");
       products = await Product.findAll();
     } else {
+      console.log("[PRODUCTS] Criteria:", criteria);
       products = await Product.get(criteria); // Assumes Product.get supports filtering
     }
+    console.log("[PRODUCTS] Returning products count:", products.length);
     return res.json({ products });
   } catch (err) {
+    console.log("[PRODUCTS] Error in GET /products", err);
     return next(err);
   }
 });
 
 // GET /products/:id - get a single product by id
 router.get("/:id", async (req, res, next) => {
+  console.log("[PRODUCTS] GET /products/:id handler start");
   try {
     const id = req.params.id;
     const products = await Product.get({ id });
     if (!products || products.length === 0) {
+      console.log(`[PRODUCTS] Product with id ${id} not found`);
       throw new ExpressError(`Product with id ${id} not found`, 404);
     }
+    console.log(`[PRODUCTS] Returning product for id ${id}`);
     return res.json({ product: products[0] });
   } catch (err) {
+    console.log("[PRODUCTS] Error in GET /products/:id", err);
     return next(err);
   }
 });

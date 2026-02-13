@@ -1,7 +1,4 @@
-// Helper function for SQL for partial updates
-
 /**
- * Generates a SQL SET clause and values array for partial updates.
  * @param {Object} dataToUpdate - The fields to update (key-value pairs).
  * @param {Object} jsToSql - Maps JS-style field names to SQL column names.
  * @returns {{ setCols: string, values: any[] }}
@@ -26,8 +23,6 @@ function sqlForPartialUpdate(dataToUpdate, jsToSql = {}) {
 
 
 /**
- * Generic async get helper for dynamic SELECT queries.
- *
  * @param {Object} db - The database client/connection.
  * @param {string} tableName - The table to query.
  * @param {Object} criteria - Key-value pairs for WHERE clause (optional).
@@ -48,8 +43,6 @@ async function asyncGet(db, tableName, criteria = {}) {
 
 
 /**
- * Generic async create helper for dynamic INSERT queries.
- *
  * @param {Object} db - The database client/connection.
  * @param {string} tableName - The table to insert into.
  * @param {Object} data - Key-value pairs for columns and their values.

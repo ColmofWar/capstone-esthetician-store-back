@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShoppingCartItemsResponse",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "user_id": { "type": "integer" },
+          "product_id": { "type": "integer" },
+          "quantity": { "type": "integer", "minimum": 1 },
+          "name": { "type": "string" },
+          "price": { "type": ["string", "number"] },
+          "image_url": { "type": "string" }
+        },
+        "required": ["id", "user_id", "product_id", "quantity", "name", "price", "image_url"]
+      }
+    }
+  },
+  "required": ["items"]
+}

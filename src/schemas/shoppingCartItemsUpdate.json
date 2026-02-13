@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShoppingCartItem",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the shopping cart item."
+    },
+    "user_id": {
+      "type": "integer",
+      "description": "ID of the user who owns the cart item."
+    },
+    "product_id": {
+      "type": "integer",
+      "description": "ID of the product."
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Quantity of the product in the cart."
+    }
+  },
+  "required": ["user_id", "product_id", "quantity"]
+}

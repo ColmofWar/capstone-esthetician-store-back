@@ -217,14 +217,8 @@ INSERT INTO routine_steps (routine_id, step_number, product_id, instructions) VA
 (16, 2, 30, 'Gentle cleanser.'),
 (16, 3, 50, 'Repair serum.');
 
-INSERT INTO shopping_cart (user_id) VALUES
-(1),
-(2),
-(3),
-(4),
-(5);
 
-INSERT INTO shopping_cart_items (cart_id, product_id, quantity) VALUES
+INSERT INTO shopping_cart_items (user_id, product_id, quantity) VALUES
 (1, 10, 2),
 (1, 15, 1),
 (2, 20, 3),
@@ -256,7 +250,6 @@ SELECT setval(pg_get_serial_sequence('categories','id'), COALESCE((SELECT MAX(id
 SELECT setval(pg_get_serial_sequence('products','id'), COALESCE((SELECT MAX(id) FROM products), 1));
 SELECT setval(pg_get_serial_sequence('users','id'), COALESCE((SELECT MAX(id) FROM users), 1));
 SELECT setval(pg_get_serial_sequence('addresses','id'), COALESCE((SELECT MAX(id) FROM addresses), 1));
-SELECT setval(pg_get_serial_sequence('shopping_cart','id'), COALESCE((SELECT MAX(id) FROM shopping_cart), 1));
 SELECT setval(pg_get_serial_sequence('shopping_cart_items','id'), COALESCE((SELECT MAX(id) FROM shopping_cart_items), 1));
 SELECT setval(pg_get_serial_sequence('orders','id'), COALESCE((SELECT MAX(id) FROM orders), 1));
 SELECT setval(pg_get_serial_sequence('order_items','id'), COALESCE((SELECT MAX(id) FROM order_items), 1));
