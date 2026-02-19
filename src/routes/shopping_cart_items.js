@@ -101,15 +101,8 @@ router.delete('/:username/:itemId', authenticateJWT, ensureCorrectUserOrAdmin, a
       console.log('[SHOPPING_CART_ITEMS] User not found:', username);
       return res.status(404).json({ error: 'User not found' });
     }
-    // Get current cart
-    const cart = await ShoppingCart.viewCart(user.id);
-    if (!cart) {
-      console.log('[SHOPPING_CART_ITEMS] Cart items not found for user id:', user.id);
-      return res.status(404).json({ error: 'Shopping cart not found' });
-    }
-    // Remove item from cart
-    const newItems = (cart.items || []).filter(item => item.id !== itemId);
-    const deleteCartItem = await ShoppingCart.deleteCartItem(user.id, newItems);
+    // Remove only the specific item from cart
+    const deleteCartItem = await ShoppingCart.deleteCartItem(user.id, itemId);
     if (!validateCartResponse(deleteCartItem)) {
       console.log('[SHOPPING_CART_ITEMS] Invalid cart response schema after delete:', deleteCartItem);
       return next(ExpressError.BadRequest('Invalid cart response schema after delete'));
