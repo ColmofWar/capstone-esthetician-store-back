@@ -92,49 +92,49 @@ INSERT INTO users (id, username, email, password_hash, phone) VALUES
 (15, 'omars', 'omars@example.com', 'c5d6a1b2c3d4e5f6a7b8c9d0e1f2a3b4', 5553322110);
 
 INSERT INTO addresses (id, user_id, street, city, state, postal_code, country, address_type) VALUES
-(1, 1, '123 Maple St', 'Springfield', 'IL', '62704', 'USA', 'shipping'),
+(1, 1, '123 Maple St', 'Springfield', 'IL', '62704', 'USA', 'home'),
 (2, 1, '123 Maple St', 'Springfield', 'IL', '62704', 'USA', 'billing'),
 
-(3, 2, '456 Oak Ave', 'Raleigh', 'NC', '27601', 'USA', 'shipping'),
+(3, 2, '456 Oak Ave', 'Raleigh', 'NC', '27601', 'USA', 'home'),
 (4, 2, '789 Pine Rd', 'Durham', 'NC', '27701', 'USA', 'billing'),
 
-(5, 3, '101 Elmwood Dr', 'Austin', 'TX', '73301', 'USA', 'shipping'),
+(5, 3, '101 Elmwood Dr', 'Austin', 'TX', '73301', 'USA', 'home'),
 (6, 3, '101 Elmwood Dr', 'Austin', 'TX', '73301', 'USA', 'billing'),
 
-(7, 4, '321 Birch Blvd', 'Denver', 'CO', '80202', 'USA', 'shipping'),
+(7, 4, '321 Birch Blvd', 'Denver', 'CO', '80202', 'USA', 'home'),
 (8, 4, '900 Cedar Ave', 'Boulder', 'CO', '80301', 'USA', 'billing'),
 
-(9, 5, '654 Cedar Dr', 'Seattle', 'WA', '98101', 'USA', 'shipping'),
+(9, 5, '654 Cedar Dr', 'Seattle', 'WA', '98101', 'USA', 'home'),
 (10, 5, '654 Cedar Dr', 'Seattle', 'WA', '98101', 'USA', 'billing'),
 
-(11, 6, '111 Walnut Ln', 'Boston', 'MA', '02108', 'USA', 'shipping'),
+(11, 6, '111 Walnut Ln', 'Boston', 'MA', '02108', 'USA', 'home'),
 (12, 6, '212 Beacon St', 'Cambridge', 'MA', '02139', 'USA', 'billing'),
 
-(13, 7, '222 Chestnut Ct', 'Chicago', 'IL', '60601', 'USA', 'shipping'),
+(13, 7, '222 Chestnut Ct', 'Chicago', 'IL', '60601', 'USA', 'home'),
 (14, 7, '222 Chestnut Ct', 'Chicago', 'IL', '60601', 'USA', 'billing'),
 
-(15, 8, '333 Poplar Way', 'Miami', 'FL', '33101', 'USA', 'shipping'),
+(15, 8, '333 Poplar Way', 'Miami', 'FL', '33101', 'USA', 'home'),
 (16, 8, '444 Palm Ave', 'Orlando', 'FL', '32801', 'USA', 'billing'),
 
-(17, 9, '555 Ash Ter', 'Phoenix', 'AZ', '85001', 'USA', 'shipping'),
+(17, 9, '555 Ash Ter', 'Phoenix', 'AZ', '85001', 'USA', 'home'),
 (18, 9, '555 Ash Ter', 'Phoenix', 'AZ', '85001', 'USA', 'billing'),
 
-(19, 10, '600 Sycamore Cir', 'Atlanta', 'GA', '30301', 'USA', 'shipping'),
+(19, 10, '600 Sycamore Cir', 'Atlanta', 'GA', '30301', 'USA', 'home'),
 (20, 10, '700 Peach St', 'Savannah', 'GA', '31401', 'USA', 'billing'),
 
-(21, 11, '666 Dogwood St', 'San Diego', 'CA', '92101', 'USA', 'shipping'),
+(21, 11, '666 Dogwood St', 'San Diego', 'CA', '92101', 'USA', 'home'),
 (22, 11, '666 Dogwood St', 'San Diego', 'CA', '92101', 'USA', 'billing'),
 
-(23, 12, '777 Redwood Rd', 'Portland', 'OR', '97201', 'USA', 'shipping'),
+(23, 12, '777 Redwood Rd', 'Portland', 'OR', '97201', 'USA', 'home'),
 (24, 12, '888 Pine Grove', 'Eugene', 'OR', '97401', 'USA', 'billing'),
 
-(25, 13, '888 Spruce Ave', 'Minneapolis', 'MN', '55401', 'USA', 'shipping'),
+(25, 13, '888 Spruce Ave', 'Minneapolis', 'MN', '55401', 'USA', 'home'),
 (26, 13, '888 Spruce Ave', 'Minneapolis', 'MN', '55401', 'USA', 'billing'),
 
-(27, 14, '999 Fir Dr', 'New York', 'NY', '10001', 'USA', 'shipping'),
+(27, 14, '999 Fir Dr', 'New York', 'NY', '10001', 'USA', 'home'),
 (28, 14, '1001 Pine St', 'Brooklyn', 'NY', '11201', 'USA', 'billing'),
 
-(29, 15, '1000 Elm St', 'Los Angeles', 'CA', '90001', 'USA', 'shipping'),
+(29, 15, '1000 Elm St', 'Los Angeles', 'CA', '90001', 'USA', 'home'),
 (30, 15, '1000 Elm St', 'Los Angeles', 'CA', '90001', 'USA', 'billing');
 
 INSERT INTO routines (user_id, name, description)

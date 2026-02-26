@@ -9,7 +9,7 @@ const User = require("../models/User");
 const { createToken } = require("../helpers/tokens");
 const userRegisterSchema = require("../schemas/userRegister.json");
 const userUpdateSchema = require("../schemas/userUpdate.json");
-const { ensureCorrectUserOrAdmin, ensureAdmin } = require("../middleware/authenticate");
+const { ensureCorrectUserOrAdmin, ensureAdmin, authenticateJWT } = require("../middleware/authenticate");
 
 
 /**
@@ -62,7 +62,7 @@ router.get("/", ensureAdmin, async function (req, res, next) {
  * Authorization required: admin or same-user-as-:username
  **/
 
-router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.delete("/:username", authenticateJWT, ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     await User.remove(req.params.username);
     return res.json({ deleted: req.params.username });
@@ -78,7 +78,7 @@ router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, 
  * Authorization required: admin or same user-as-:username
  **/
 
-router.get("/:username", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.get("/:username", authenticateJWT, ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     const user = await User.get(req.params.username);
     return res.json({ user });
@@ -97,7 +97,7 @@ router.get("/:username", ensureCorrectUserOrAdmin, async function (req, res, nex
  * Authorization required: admin or same-user-as-:username
  **/
 
-router.patch("/:username", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.patch("/:username", authenticateJWT, ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     const validator = jsonschema.validate(req.body, userUpdateSchema);
     if (!validator.valid) {

@@ -13,7 +13,17 @@
       "minLength": 6,
       "maxLength": 60,
       "format": "email"
-    }
+    },
+    "phone": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 15
+    },
+    "password_hash": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 255
+    } 
   },
   "additionalProperties": false,
   "required": []

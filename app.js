@@ -9,6 +9,7 @@ const categoriesRoutes = require('./src/routes/categories.js');
 const shoppingCartItemsRoutes = require('./src/routes/shopping_cart_items.js');
 const userRoutes = require('./src/routes/users.js');
 const authRoutes = require('./src/routes/auth.js');
+const addressRoutes = require('./src/routes/address.js');
 const { authenticateJWT } = require("./src/middleware/authenticate");
 
 
@@ -32,6 +33,7 @@ app.use('/categories', (req, res, next) => { console.log("[ROUTE] /categories hi
 app.use('/shopping_cart_items', (req, res, next) => { console.log("[ROUTE] /shopping_cart_items hit"); next(); }, shoppingCartItemsRoutes);
 app.use('/users', (req, res, next) => { console.log("[ROUTE] /users hit"); next(); }, userRoutes);
 app.use('/auth', (req, res, next) => { console.log("[ROUTE] /auth hit"); next(); }, authRoutes);
+app.use('/address', (req, res, next) => { console.log("[ROUTE] /address hit"); next(); }, addressRoutes);
 
 // 404 handler
 app.use((req, res, next) => {

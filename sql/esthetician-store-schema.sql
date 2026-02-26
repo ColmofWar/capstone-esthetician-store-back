@@ -59,7 +59,7 @@ CREATE TABLE addresses (
     state VARCHAR(100) NOT NULL,
     postal_code VARCHAR(20) NOT NULL,
     country VARCHAR(100) NOT NULL,
-    address_type VARCHAR(20) CHECK (address_type IN ('shipping', 'billing')),
+    address_type VARCHAR(20) CHECK (address_type IN ('home', 'billing')),
     CONSTRAINT fk_user_address FOREIGN KEY (user_id)
         REFERENCES users(id)
         ON DELETE CASCADE

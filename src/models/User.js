@@ -61,7 +61,7 @@ class User {
    */
   static async get(username) {
     const result = await db.query(
-      `SELECT id, username, email FROM users WHERE username = $1`,
+      `SELECT id, username, email, phone FROM users WHERE username = $1`,
       [username]
     );
     if (result.rows.length === 0) return null;

@@ -69,6 +69,8 @@ function ensureAdmin(req, res, next) {
  */
 
 function ensureCorrectUserOrAdmin(req, res, next) {
+  console.log("[AUTH] ensureCorrectUserOrAdmin called for route:", req.originalUrl);
+  console.log("[AUTH] User from token:", res.locals.user);
   try {
     const user = res.locals.user;
     if (!(user && (user.isAdmin || user.username === req.params.username))) {
