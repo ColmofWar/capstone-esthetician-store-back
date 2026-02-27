@@ -33,6 +33,23 @@ class Address {
   static async get(criteria = {}) {
     return await asyncGet(db, "addresses", criteria);
   }
+
+  /**
+   * Update an address by id with partial data
+   * @param {number} id - Address id
+   * @param {Object} data - Partial address data
+   * @returns {Object} The updated address row
+   */
+  static async update(id, data) {
+    if (!id || !data || Object.keys(data).length === 0) throw new Error("Missing id or data for update");
+    const { setCols, values } = sqlForPartialUpdate(data);
+    const result = await db.query(
+      `UPDATE addresses SET ${setCols} WHERE id = $${values.length + 1} RETURNING *`,
+      [...values, id]
+    );
+    if (result.rows.length === 0) throw new ExpressError("Address not found", 404);
+    return result.rows[0];
+  }
   
 }
 

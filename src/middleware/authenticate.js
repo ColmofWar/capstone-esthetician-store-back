@@ -73,7 +73,11 @@ function ensureCorrectUserOrAdmin(req, res, next) {
   console.log("[AUTH] User from token:", res.locals.user);
   try {
     const user = res.locals.user;
-    if (!(user && (user.isAdmin || user.username === req.params.username))) {
+    // If the user in the route param does not exist, return 404
+    if (!user) {
+      return next(ExpressError.NotFound("User not found"));
+    }
+    if (!(user.isAdmin || user.username === req.params.username)) {
       throw ExpressError.Unauthorized();
     }
     return next();

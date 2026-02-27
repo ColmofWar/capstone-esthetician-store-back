@@ -3,7 +3,7 @@
 // External libraries
 const jsonschema = require("jsonschema");
 const express = require("express");
-const { ExpressError } = require("../helpers/expressError");
+const ExpressError = require("../helpers/expressError");
 
 // Models
 const Product = require("../models/Product");
@@ -12,6 +12,26 @@ const Product = require("../models/Product");
 const productSearchSchema = require("../schemas/productSearch.json");
 
 const router = express.Router();
+
+// PATCH /products/:id/stock - update stock quantity for a product
+router.patch("/:id/stock", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const { stock_quantity } = req.body;
+    // Validate input
+    if (stock_quantity === undefined || isNaN(Number(stock_quantity))) {
+      throw new ExpressError("stock_quantity must be a number", 400);
+    }
+    // Update stock_quantity using Product.updateStockQuantity
+    const updatedProduct = await Product.updateStockQuantity(id, Number(stock_quantity));
+    if (!updatedProduct) {
+      throw new ExpressError(`Product with id ${id} not found`, 404);
+    }
+    return res.json({ product: updatedProduct });
+  } catch (err) {
+    return next(err);
+  }
+});
 
 // GET /products - list all products sorted by name, with query validation
 router.get("/", async (req, res, next) => {

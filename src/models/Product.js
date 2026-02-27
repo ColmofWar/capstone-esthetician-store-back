@@ -1,5 +1,6 @@
 
 
+
 const db = require("../../db");
 const { sqlForPartialUpdate, asyncGet } = require("../helpers/sql");
 const { ExpressError } = require("../helpers/expressError");
@@ -28,7 +29,20 @@ class Product {
     const result = await db.query("SELECT * FROM products ORDER BY name ASC");
     return result.rows;
   }
-
+    /**
+   * Update stock_quantity for a product by id.
+   * @param {number|string} id - Product id
+   * @param {number} stock_quantity - New stock quantity
+   * @returns {Promise<Object|null>} Updated product row or null if not found
+   */
+  static async updateStockQuantity(id, stock_quantity) {
+    const result = await db.query(
+      `UPDATE products SET stock_quantity = $1 WHERE id = $2 RETURNING *`,
+      [stock_quantity, id]
+    );
+    if (result.rows.length === 0) return null;
+    return result.rows[0];
+  }
   
 }
 

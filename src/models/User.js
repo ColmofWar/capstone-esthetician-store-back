@@ -19,11 +19,12 @@ class User {
    * @returns {User}
    */
   static async register({ username, email, password_hash, phone }) {
+    const phoneValue = phone === "" ? null : phone;
     const result = await db.query(
       `INSERT INTO users (username, email, password_hash, phone)
        VALUES ($1, $2, $3, $4)
        RETURNING id, username, email, password_hash, phone`,
-      [username, email, password_hash, phone]
+      [username, email, password_hash, phoneValue]
     );
     return new User(result.rows[0]);
   }
@@ -75,6 +76,10 @@ class User {
    * @returns {User|null}
    */
   static async update(username, data) {
+    // If phone is present and is an empty string, convert to null
+    if (Object.prototype.hasOwnProperty.call(data, 'phone') && data.phone === "") {
+      data.phone = null;
+    }
     const { setCols, values } = sqlForPartialUpdate(data);
     const result = await db.query(
       `UPDATE users SET ${setCols} WHERE username = $${values.length + 1}

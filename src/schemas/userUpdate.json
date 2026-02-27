@@ -15,9 +15,10 @@
       "format": "email"
     },
     "phone": {
-      "type": "string",
-      "minLength": 10,
-      "maxLength": 15
+      "anyOf": [
+        { "type": "string", "minLength": 10, "maxLength": 15 },
+        { "type": "string", "maxLength": 0 }
+      ]
     },
     "password_hash": {
       "type": "string",
