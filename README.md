@@ -47,7 +47,9 @@ npm test src/__tests__/products.routes.test.js
 8. **View Orders** (if implemented).
 
 ## API Documentation
-- **Link:** postgres://@localhost/esthetician_store
+- **Link:** 
+    - **ONLINE_DATABASE_URL**="postgresql://neondb_owner:npg_0DilROL9vhVm@ep-aged-shape-aiab86ji-pooler.c-4.us-east-1.aws.neon.tech/esthetician_store?sslmode=require&channel_binding=require"
+    - **ONLINE_TEST_DATABASE_URL**="postgresql://neondb_owner:npg_0DilROL9vhVm@ep-aged-shape-aiab86ji-pooler.c-4.us-east-1.aws.neon.tech/esthetician_store_test?sslmode=require&channel_binding=require"
 This project exposes a RESTful API.  
 - **Endpoints:**  
 	- `/products` — List/search products  
