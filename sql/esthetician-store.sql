@@ -7,7 +7,7 @@ CREATE DATABASE esthetician_store;
 
 \i esthetician-store-schema.sql
 \i esthetician-store-seed.pg.sql
-
+/*
 \echo 'Delete and recreate esthetician_store_test db?'
 \prompt 'Return for yes or control-C to cancel > ' foo
 
@@ -16,3 +16,4 @@ CREATE DATABASE esthetician_store_test;
 \connect esthetician_store_test
 
 \i esthetician-store-schema.sql
+*/
